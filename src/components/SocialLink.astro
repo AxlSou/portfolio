@@ -1,0 +1,13 @@
+---
+interface Props {
+    ref: string;
+}
+
+const { ref } = Astro.props
+---
+
+<li class="group">
+    <a href={ref} target="_blank">
+      <slot />
+    </a>
+</li>
