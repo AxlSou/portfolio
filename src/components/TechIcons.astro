@@ -1,0 +1,11 @@
+---
+interface Props {
+    name: string;
+}
+
+const { name } = Astro.props;
+---
+<span class="relative flex items-center justify-center group">
+    <slot />
+    <span class="relative text-xs text-secondary opacity-0 group-hover:opacity-100">{name}</span>
+</span>
