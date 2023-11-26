@@ -9,7 +9,8 @@ export default {
 		extend: {
 			colors: {
 				primary: '#B7AB98',
-				secondary: '#EB5939'
+				secondary: '#EB5939',
+				tertiary: '#B8AC99'
 			},
 			fontFamily: {
 				sans: 'Noto Sans Javanese, sans-serif',
@@ -18,8 +19,19 @@ export default {
 			sepia: {
 				25: '.25',
 				50: '.50',
+			},
+			animation: {
+				'underline-effect': 'underline 0.3s linear 1'
+			},
+			keyframes: {
+				underline: {
+					'0%': {width: '0%'},
+					'100%': {width: '100%'},
+				}
 			}
 		},
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/forms'),
+	],
 }
