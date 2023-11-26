@@ -1,0 +1,56 @@
+---
+import Header from "../components/Header.astro";
+import data from "../data/projects.json";
+import TechIcons from "../components/TechIcons.astro";
+import GithubIcon from "../icons/GithubIcon.astro";
+import LinkIcon from "../icons/LinkIcon.astro";
+---
+
+<section id="projects" class="h-full w-full flex flex-col justify-center py-16">
+  <Header title="Projects" />
+  {
+    data.map((project) => {
+      return (
+        <article id={project.id} class="px-16 py-8 mt-10 flex flex-col lg:flex-row lg:odd:flex-row-reverse lg:gap-10 items-center project">
+          <div>
+            <span class="text-sm text-secondary font-artifika">
+              {project.type}
+            </span>
+            <h4 class="text-primary text-4xl font-semibold py-2">
+              {project.name}
+            </h4>
+            <p class="text-primary py-4">{project.description}</p>
+            <div class="flex flex-row gap-4 lg:gap-8">
+              {project.technologies.map((technology) => {
+                return <TechIcons name={technology} />;
+              })}
+            </div>
+            {project.links.map((link) => {
+              return (
+                <div class="flex flex-row gap-8 mt-4 lg:mt-8 items-center justify-end">
+                  {link.github && (
+                    <a href={link.github} target="_blank" class="text-primary py-3 pt-4 px-5 font-semibold font-sans border border-secondary rounded-md">
+                      View Github
+                    </a>
+                  )}
+                  {link.demo && (
+                    <a href={link.demo} target="_blank" class="group flex items-start gap-2 text-primary relative">
+                      <span class="pt-1">View project</span>
+                      <span class="group-hover:animate-underline-effect w-full h-0.5 bg-secondary absolute -bottom-1"></span>
+                      <LinkIcon />
+                    </a>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          <img
+            src={project.img}
+            class="rounded-md row-span-full object-cover justify-self-end lg:h-80 lg:max-w-lg"
+            alt="DiveLog Project"
+          />
+        </article>
+      );
+    })
+  }
+</section>
