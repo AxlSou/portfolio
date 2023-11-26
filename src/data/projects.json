@@ -1,0 +1,30 @@
+[
+    {
+        "id": "divelog",
+        "name": "DiveLog",
+        "type": "Personal Project",
+        "description": "Due one of my hobbies is scuba diving, I decided to create an app where new divers can log and track all their dives and create a portfolio",
+        "technologies": ["React", "Typescript", "Redux", "Firebase"],
+        "img": "/dive-log.webp",
+        "links": [
+            {
+                "github": "https://github.com/AxlSou/DivesLog",
+                "demo": "https://dives-log.vercel.app/"
+            }
+        ]
+    },
+    {
+        "id": "google-jobs",
+        "name": "Google Jobs",
+        "type": "Dev Challenge",
+        "description": "One of the challenges provided by devChallenges.io. It's a job seeker website that I used it to practice with REST APIs and Tailwind",
+        "technologies": ["React", "JavaScript", "Vite", "Tailwind"],
+        "img": "/google-jobs.webp",
+        "links": [
+            {
+                "github": "https://github.com/AxlSou/google-jobs",
+                "demo": "https://google-jobs.vercel.app/"
+            }
+        ]
+    }
+]
