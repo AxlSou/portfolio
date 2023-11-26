@@ -1,0 +1,18 @@
+---
+import Header from '../components/Header.astro';
+---
+
+<section id="about" class="h-screen w-full py-16 flex flex-col justify-center items-center">
+    <Header title='About Me' />
+    <article id="about-content" class="h-full w-full px-16 flex flex-col lg:flex-row gap-10 items-center">
+        <div class="lg:px-12">
+            <p class="text-primary mb-4">My expertise lies in a range of technologies, including React, JavaScript, HTML, CSS, Node.js, and more. My focus is on building user-friendly and efficient web applications, ensuring that every line of code I write contributes to the overall quality and efficiency of the projects I work on.</p>
+            <p class="text-primary mb-4">While I find joy in solving complex coding challenges, I also embrace the importance of work-life balance. Outside the world of coding, you'll find me exploring the depths of the ocean as an avid scuba diver or engaged in a strategic battle on the chessboard.</p>
+            <p class="text-primary">I am excited about the endless possibilities that technology offers and I am always eager to collaborate on exciting projects that push the boundaries of what is possible on the web.</p>
+        </div>
+        <div class="w-full flex flex-row justify-center">
+            <img src="/photo.webp" class="max-h-72 max-w-60 rounded-md justify-self-center sepia-50 hover:sepia-0 transition-all hover:-translate-x-1 hover:-translate-y-1" alt="Axel photo">
+            <div class="border border-secondary rounded-md absolute h-72 w-60 ml-3 mt-2 -z-10"></div>
+        </div>
+    </article>
+</section>
