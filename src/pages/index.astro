@@ -1,63 +1,65 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import ReactIcon from '../icons/ReactIcon.astro';
-import TypescriptIcon from '../icons/TypescriptIcon.astro'
-import ReduxIcon from '../icons/ReduxIcon.astro'
-import FirebaseIcon from '../icons/FirebaseIcon.astro'
-import TechIcons from '../components/TechIcons.astro';
-import GithubIcon from '../icons/GithubIcon.astro';
-import LinkIcon from '../icons/LinkIcon.astro'
+import Layout from "../layouts/Layout.astro";
+import Projects from "../components/Projects.astro";
+import About from "../components/About.astro";
+import Contact from "../components/Contact.astro";
 ---
 
 <Layout title="🧑‍💻 Portfolio - Axel Soubielle">
-	<main class="m-auto w-full max-w-screen-2xl lg:px-52">
-		<section class="h-screen grid content-center">
-			<p class="text-secondary font-artifika text-center">Hey there! My name is </p>
-			<h1 class="text-primary font-sans text-7xl font-bold mt-8 text-center">Axel Soubielle</h1>
-			<h2 class="text-secondary font-sans text-center text-4xl mt-4 font-semibold">Web Developer</h2>
-			<p class="text-primary font-sans text-center mt-10 lg:px-24">I've been diving into the coding universe for the last 2 years, using
-				technologies such as React (TypeScript/ JavaScript), NodeJS, Java and Spring. Excited to share my projects with you today!</p>
-		</section>
-		<section id="about" class="h-screen flex flex-col justify-center">
-			<Header title='About Me' />
-			<article class="px-16 py-8 mt-10 grid lg:grid-cols-[1fr_300px] lg:grid-flow-col content-center">
-				<div class="grid self-center px-12">
-					<p class="text-primary mb-4">Hello! My name is Axel and I enjoy creating things that live on the internet. My interest in web development started back in 2012 when I decided to try editing custom Tumblr themes — turns out hacking together a custom reblog button taught me a lot about HTML & CSS!</p>
-					<p class="text-primary">Fast-forward to today, and I’ve had the privilege of working at an advertising agency, a start-up, a huge corporation, and a student-led design studio. My main focus these days is building accessible, inclusive products and digital experiences at Upstatement for a variety of clients.</p>
-				</div>
-				<img src="./../../public/photo.jpg" class="max-h-72 max-w-60 row-span-full rounded-md justify-self-center sepia-50 hover:sepia-0 transition-all hover:-translate-x-1 hover:-translate-y-1" alt="Axel photo">
-				<div class="border border-secondary rounded-md absolute h-72 w-60 mr-1 mt-2 right-72 -z-10"></div>
-			</article>
-		</section>
-		<section id="projects" class="h-screen w-full flex flex-col justify-center">
-			<Header title='Projects' />
-			<article class="px-16 py-8 mt-10 grid lg:grid-cols-[400px_1fr] lg:grid-flow-col items-center">
-				<div>
-					<span class="text-sm text-secondary font-artifika">Personal Project</span>
-					<h4 class="text-primary text-4xl font-semibold py-2">DiveLog</h4>
-					<p class="text-primary py-4">Due one of my hobbies is scuba diving, I decided to create an app where new divers can log and track all their dives and create a portfolio</p>
-					<div class="flex flex-row gap-8">
-						<TechIcons name='React'>
-							<ReactIcon />
-						</TechIcons>
-						<TechIcons name="Typescript">
-							<TypescriptIcon />
-						</TechIcons>
-						<TechIcons name='Redux'>
-							<ReduxIcon />
-						</TechIcons>
-						<TechIcons name='Firebase'>
-							<FirebaseIcon />
-						</TechIcons>
-					</div>
-					<div class="flex flex-row gap-8 mt-4 lg:mt-8 items-center justify-end">
-						<GithubIcon />
-						<LinkIcon />
-					</div>
-				</div>
-				<img src="./../../public/dive-log.jpg" class="rounded-md row-span-full object-cover justify-self-end h-80 max-w-lg" alt="DiveLog Project">
-			</article>
-		</section>
-	</main>
+  <main class="m-auto w-full max-w-screen-2xl lg:px-52">
+    <section id="hero" class="grid content-center justify-center">
+      <div class="box overflow-hidden text-center">
+        <p
+          class="text-secondary font-artifika text-center presentation inline-block"
+        >
+          Hey there! My name is
+        </p>
+      </div>
+      <div class="box overflow-hidden text-center">
+        <h1
+          class="text-primary font-sans text-7xl font-bold mt-8 text-center presentation inline-block"
+        >
+          Axel Soubielle
+        </h1>
+      </div>
+      <div class="box overflow-hidden text-center">
+        <h2
+          class="text-secondary font-sans text-center text-4xl mt-4 font-semibold inline-block presentation"
+        >
+          Web Developer
+        </h2>
+      </div>
+      <div class="box overflow-hidden text-center">
+        <p
+          class="text-primary font-sans text-center mt-10 lg:px-36 inline-block presentation"
+        >
+          I've been diving into the coding universe for the last 2 years, using
+          technologies such as React (TypeScript/ JavaScript), NodeJS, Java and
+          Spring. Proficient in agile development methodologies and experienced
+          in working in cross-functional teams. Excited to share my projects
+          with you today!
+        </p>
+      </div>
+    </section>
+    <About />
+    <Projects />
+    <Contact />
+  </main>
 </Layout>
+<style>
+  section {
+    height: 100svh;
+  }
+</style>
+
+<script>
+  import anime from "animejs";
+
+  anime({
+    targets: ".presentation",
+    translateY: [100, 0],
+    easing: "easeOutExpo",
+    duration: 1500,
+    delay: (el, i) => i * 200,
+  });
+</script>
