@@ -1,44 +1,100 @@
 ---
 
 ---
-
 <nav>
   <ul class="flex flex-col text-end font-artifika layout">
     <li>
-      <a href="#about" class="group flex relative overflow-hidden">
+      <a href="#about" class="group flex relative overflow-hidden nav-link">
         <span
-          class="text-tertiary text-opacity-50 inline-block group-hover:-translate-y-5 transition-transform"
+          class="text-tertiary text-opacity-50 inline-block group-hover:-translate-y-5 transition-transform duration-300"
           >About</span
         >
         <span
-          class="text-primary absolute -bottom-5 group-hover:-translate-y-5 transition-transform"
+          class="text-primary absolute -bottom-5 group-hover:-translate-y-5 transition-transform duration-300"
           >About</span
         >
       </a>
     </li>
     <li>
-      <a href="#projects" class="group flex relative overflow-hidden">
+      <a href="#projects" class="group flex relative overflow-hidden nav-link">
         <span
-          class="text-tertiary text-opacity-50 inline-block group-hover:-translate-y-5 transition-transform"
+          class="text-tertiary text-opacity-50 inline-block group-hover:-translate-y-5 transition-transform duration-300"
           >Projects</span
         >
         <span
-          class="text-primary absolute -bottom-5 group-hover:-translate-y-5 transition-transform"
+          class="text-primary absolute -bottom-5 group-hover:-translate-y-5 transition-transform duration-300"
           >Projects</span
         >
       </a>
     </li>
     <li>
-      <a href="#contact" class="group flex relative overflow-hidden">
+      <a href="#contact" class="group flex relative overflow-hidden nav-link">
         <span
-          class="text-tertiary text-opacity-50 inline-block group-hover:-translate-y-5 transition-transform"
+          class="text-tertiary text-opacity-50 inline-block group-hover:-translate-y-5 transition-transform duration-300"
           >Contact</span
         >
         <span
-          class="text-primary absolute -bottom-5 group-hover:-translate-y-5 transition-transform"
+          class="text-primary absolute -bottom-5 group-hover:-translate-y-5 transition-transform duration-300"
           >Contact</span
         >
       </a>
     </li>
   </ul>
 </nav>
+
+<script>
+  const navLinks = document.querySelectorAll(".nav-link");
+  let activeSection = 'about'
+
+  function isInViewport(element: HTMLElement) {
+    const rect = element?.getBoundingClientRect();
+    if (rect)
+      return (
+        document.documentElement.clientHeight >
+          rect.y + (rect.height * 1) / 2 &&
+        rect.bottom * 1.5 > document.documentElement.clientHeight
+      );
+  }
+
+  function activeSectionAnimation(links: Element){
+	links.children[0].classList.remove('group-hover:-translate-y-5')
+	links.children[0].classList.add('-translate-y-5')
+	links.children[1].classList.remove('group-hover:-translate-y-5')
+	links.children[1].classList.add('-translate-y-5')
+  }
+
+  function removeActiveSection(links: Element){
+	links.children[1].classList.remove('-translate-y-5')
+	links.children[1].classList.add('group-hover:-translate-y-5')
+	links.children[0].classList.remove('-translate-y-5')
+	links.children[0].classList.add('group-hover:-translate-y-5')
+  }
+
+  function detectActiveSection() {
+    navLinks.forEach((value) => {
+      const section = document.getElementById(
+        value.children[0].innerHTML.toLowerCase()
+      );
+      if (section && isInViewport(section)) {
+        activeSection = value.children[0].innerHTML.toLowerCase()
+      } else {
+		removeActiveSection(value)
+	  }
+    });
+
+	switch(activeSection){
+		case 'about':
+			return activeSectionAnimation(navLinks[0]);
+		case 'projects':
+			return activeSectionAnimation(navLinks[1]);
+		case 'contact':
+			return activeSectionAnimation(navLinks[2]);
+		default:
+			return activeSectionAnimation(navLinks[0]);
+	}
+  }
+
+  detectActiveSection();
+
+  window.addEventListener("scroll", () => detectActiveSection());
+</script>
