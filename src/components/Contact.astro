@@ -2,16 +2,132 @@
 import Header from "./Header.astro";
 ---
 
-<section id="contact" class="h-full w-full flex flex-col justify-center py-16 lg:px-32">
-    <Header title="Contact Me" />
+<section
+  id="contact"
+  class="h-full w-full py-16 flex flex-col justify-center items-center"
+>
+  <Header title="Contact Me" />
+  <article class="px-4 sm:px-8 md:px-16 xl:px-32 py-8 mt-10 flex flex-col">
     <h2 class="text-primary text-3xl text-center mt-20">Get in touch</h2>
-    <p class="text-primary text-center py-6 px-8 lg:px-36">I'm always looking for new opportunities to work with great people. If you have a project you'd like to discuss, please get in touch.</p>
-    <form class="flex flex-col lg:grid lg:grid-cols-2 py-6 px-8 gap-y-10 lg:gap-x-16 lg:px-36">
-        <input class="w-full px-0.5 py-0.5 mt-0 border-0 bg-transparent border-b-2 border-secondary text-primary placeholder:text-secondary placeholder:opacity-70 focus:ring-0 focus:border-secondary" type="text" name="first-name" id="first-name" placeholder="First Name" required>
-        <input class="w-full px-0.5 py-0.5 mt-0 border-0 bg-transparent border-b-2 border-secondary text-primary placeholder:text-secondary placeholder:opacity-70 focus:ring-0 focus:border-secondary" type="text" name="last-name" id="last-name" placeholder="Last Name" required>
-        <input class="w-full px-0.5 py-0.5 mt-0 lg:col-span-2 border-0 bg-transparent border-b-2 border-secondary text-primary placeholder:text-secondary placeholder:opacity-70 focus:ring-0 focus:border-secondary" type="email" name="email" id="email" placeholder="Email address" required>
-        <input class="w-full px-0.5 py-0.5 mt-0 lg:col-span-2 border-0 bg-transparent border-b-2 border-secondary text-primary placeholder:text-secondary placeholder:opacity-70 focus:ring-0 focus:border-secondary" type="text" name="subject" id="subject" placeholder="Subject" required>
-        <textarea class="w-full px-0.5 py-0.5 mt-0 lg:col-span-2 border-0 bg-transparent border-b-2 border-secondary text-primary placeholder:text-secondary placeholder:opacity-70 focus:ring-0 focus:border-secondary" name="message" id="message" rows="3" placeholder="Message" required></textarea>
-        <button class="w-full py-3 pt-4 items-center lg:col-span-2 text-black bg-secondary font-bold text-lg rounded-md" type="submit">Send</button>
+    <p class="text-primary text-center py-6 md:px-8 lg:px-16 xl:px-24">
+      I'm always looking for new opportunities to work with great people. If you
+      have a project you'd like to discuss, please get in touch.
+    </p>
+    <form
+      id="contactForm"
+      class="flex flex-col lg:grid lg:grid-cols-2 py-6 gap-y-10 lg:gap-x-16 px-4 md:px-8 lg:px-16 xl:px-24"
+    >
+      <input
+        class="w-full px-0.5 py-0.5 mt-0 border-0 bg-transparent border-b-2 border-secondary text-primary placeholder:text-secondary placeholder:opacity-70 focus:ring-0 focus:border-secondary"
+        type="text"
+        name="first_name"
+        id="first_name"
+        placeholder="First Name"
+        required
+      />
+      <input
+        class="w-full px-0.5 py-0.5 mt-0 border-0 bg-transparent border-b-2 border-secondary text-primary placeholder:text-secondary placeholder:opacity-70 focus:ring-0 focus:border-secondary"
+        type="text"
+        name="last_name"
+        id="last_name"
+        placeholder="Last Name"
+        required
+      />
+      <input
+        class="w-full px-0.5 py-0.5 mt-0 lg:col-span-2 border-0 bg-transparent border-b-2 border-secondary text-primary placeholder:text-secondary placeholder:opacity-70 focus:ring-0 focus:border-secondary"
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email address"
+        required
+      />
+      <input
+        class="w-full px-0.5 py-0.5 mt-0 lg:col-span-2 border-0 bg-transparent border-b-2 border-secondary text-primary placeholder:text-secondary placeholder:opacity-70 focus:ring-0 focus:border-secondary"
+        type="text"
+        name="subject"
+        id="subject"
+        placeholder="Subject"
+        required
+      />
+      <textarea
+        class="w-full px-0.5 py-0.5 mt-0 lg:col-span-2 border-0 bg-transparent border-b-2 border-secondary text-primary placeholder:text-secondary placeholder:opacity-70 focus:ring-0 focus:border-secondary"
+        name="message"
+        id="message"
+        rows="3"
+        placeholder="Message"
+        required></textarea>
+      <button
+        class="w-full py-3 pt-4 flex justify-center items-center gap-1 lg:col-span-2 text-black bg-secondary font-bold text-lg rounded-md"
+        type="submit"
+        id="form_btn"
+      >
+        Send
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-send mb-2"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M10 14l11 -11"></path><path
+            d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"
+          ></path></svg
+        >
+      </button>
     </form>
+  </article>
 </section>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+></script>
+<script>
+  import emailjs from "@emailjs/browser";
+
+  const btn = document.getElementById("form_btn");
+  (function () {
+    emailjs.init(import.meta.env.PUBLIC_KEY);
+  })();
+  const form = document.getElementById("contactForm");
+
+  form?.addEventListener("submit", function (event) {
+    event.preventDefault();
+    if (!btn) return console.log("No button");
+    btn.innerText = "Sending...";
+    emailjs
+      .sendForm(
+        import.meta.env.PUBLIC_SERVICE_ID,
+        import.meta.env.PUBLIC_TEMPLATE_ID,
+        "#contactForm"
+      )
+      .then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text);
+          btn.innerText = "Sent!";
+          btn.classList.remove("bg-secondary");
+          btn.classList.add("bg-green-500");
+          setTimeout(() => {
+            btn.innerText = "Send";
+            btn.classList.remove("bg-green-500");
+            btn.classList.add("bg-secondary");
+          }, 3000);
+        },
+        function (error) {
+          console.log("FAILED...", error);
+          btn.innerText = "Failed!";
+          btn.classList.remove("bg-secondary");
+          btn.classList.add("bg-red-500");
+          setTimeout(() => {
+            btn.innerText = "Send";
+            btn.classList.remove("bg-red-500");
+            btn.classList.add("bg-secondary");
+          }, 3000);
+        }
+      );
+  });
+</script>
