@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/check': ^0.3.1
   '@astrojs/tailwind': ^5.0.2
+  '@emailjs/browser': ^3.11.0
   '@tailwindcss/forms': ^0.5.7
   '@types/animejs': ^3.1.12
   '@types/scrollreveal': ^0.0.11
@@ -15,6 +16,7 @@ specifiers:
 dependencies:
   '@astrojs/check': 0.3.1_typescript@5.2.2
   '@astrojs/tailwind': 5.0.2_y4ed3c6ffkvfqrhmiy373tejym
+  '@emailjs/browser': 3.11.0
   animejs: 3.2.1
   astro: 3.5.0_typescript@5.2.2
   scrollreveal: 4.0.9
@@ -385,6 +387,11 @@ packages:
       '@babel/helper-string-parser': 7.22.5
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
+    dev: false
+
+  /@emailjs/browser/3.11.0:
+    resolution: {integrity: sha512-RkY3FKZ3fPdK++OeF46mRTFpmmQWCHUVHZH209P3NE4D5sg2Atg7S2wa3gw5062Gl4clt4Wn5SyC4WhlVZC5pA==}
+    engines: {node: '>=14.0.0'}
     dev: false
 
   /@emmetio/abbreviation/2.3.3:
